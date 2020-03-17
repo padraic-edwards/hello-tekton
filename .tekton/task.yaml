@@ -39,6 +39,7 @@ spec:
           cat /config/toolchain.json
           echo "Cloning $REPOSITORY";
           git clone -q -b $REVISION $REPOSITORY .;
+          cat /config/toolchain.json
       volumeMounts:
         - mountPath: /config
           name: cd-config-volume
