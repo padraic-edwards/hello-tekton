@@ -14,7 +14,7 @@ spec:
         description: the ibmcloud api key
       - name: api
         description: the ibmcloud api endpoint
-        default: "http://dev.console.test.cloud.ibm.com"
+        default: "https://cloud.ibm.com"
       - name: registryNamespace
         description: the ibmcloud registry namespace
       - name: imageName
