@@ -65,10 +65,6 @@ spec:
       volumeMounts:
         - mountPath: /config
           name: config-volume
-  volumes:
-    - name: config-volume
-      configMap:
-        name: toolchain
     - name: build-docker-image
       image: ibmcom/pipeline-base-image
       env:
@@ -98,6 +94,10 @@ spec:
           export GIT_COMMIT=$(git rev-parse HEAD);
           export REGISTRY_URL=$(ibmcloud cr info | sed "2q;d" | awk '{for(i=1;i<=NF;i++) if ($i=="Registry") print $(i+1)}');
           source build-docker-image.sh;
+  volumes:
+    - name: config-volume
+      configMap:
+        name: toolchain 
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: Task
@@ -246,4 +246,7 @@ spec:
           while read line; do export $line; done < /artifacts/build.properties;
           cp /artifacts/build.properties .;
           source deploy-to-kubernetes.sh;
-      
+  volumes:
+    - name: config-volume
+      configMap:
+        name: toolchain  
