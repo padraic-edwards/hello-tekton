@@ -65,6 +65,10 @@ spec:
       volumeMounts:
         - mountPath: /config
           name: config-volume
+  volumes:
+    - name: config-volume
+      configMap:
+        name: toolchain
     - name: build-docker-image
       image: ibmcom/pipeline-base-image
       env:
