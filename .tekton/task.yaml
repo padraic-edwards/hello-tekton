@@ -36,7 +36,6 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - set -e -o pipefail;
-          cat /config/toolchain.json
           echo "Cloning $REPOSITORY";
           git clone -q -b $REVISION $REPOSITORY .;
           cat /config/toolchain.json
